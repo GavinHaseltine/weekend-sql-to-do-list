@@ -4,9 +4,19 @@ $( document ).ready( function(){
     console.log( 'JQ' );
 $('#addButton').on('click', clicklisteners)
 $('#viewTasks').on('click', '.deleteButton', deleteTask)
+$('#viewTasks').on('click', '.markAsDoneBtn', markDone)
+$('#viewTasks').on('click', '.markAsDoneBtn', checkComp)
 
     getTasks();
 });
+
+function checkComp(){
+    const checkTask = $(this).data( 'id' );
+    console.log(checkTask)
+
+    checkTask
+}
+
 
 function getTasks(){
     $.ajax({
@@ -55,7 +65,7 @@ function clicklisteners() {
          <td><button class="markAsDoneBtn"
          data-id="${Tasks[i].id}"
          data-marking="${Tasks[i].marking}">
-         Marking: ${Tasks[i].marking}
+         Complete Task
          </button></td>
         <td> <button class="deleteButton" data-id="${Tasks[i].id}">Delete</button></td>
          </tr>
@@ -74,6 +84,21 @@ function clicklisteners() {
         getTasks();
     }).catch(function (err) {
         alert('Error with delete:', err);
+    })
+ }
+
+ function markDone(){
+    const markid= $(this).data( 'id' );
+
+    console.log( 'in markDone:', markid);
+    $.ajax({
+        type: 'PUT',
+        url: `/toDoItems/${markid}`,
+    }).then(function (response) {
+        console.log('back from PUT:', response);
+        getTasks();
+    }).catch(function (err) {
+        alert ('error updating:', err);
     })
  }
 
@@ -98,3 +123,19 @@ function clicklisteners() {
 //         }
 //     })
 // }
+
+// function markDone(){
+//     const id= $(this).data( 'id' );
+//     const markStatus = $(this).data('marking');
+//     console.log( 'in markDone:', id, markStatus);
+//     $.ajax({
+//         type: 'PUT',
+//         url: `/toDoItems/${id}`,
+//         data: {newMarking: !markStatus}
+//     }).then(function (response) {
+//         console.log('back from PUT:', response);
+//         getTasks();
+//     }).catch(function (err) {
+//         alert ('error updating:', err);
+//     })
+//  }

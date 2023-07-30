@@ -53,7 +53,7 @@ app.post( '/toDoItems', ( req, res ) => {
     })
 })
 
-app.delete( '/toDoItems:id', (req, res) => {
+app.delete( '/toDoItems/:id', (req, res) => {
     console.log('in DELETE hit:', req.params.id);
 
     const query = `DELETE FROM "toDoItems" WHERE id=$1;`;
@@ -62,12 +62,32 @@ app.delete( '/toDoItems:id', (req, res) => {
     pool.query( query, values ).then( (response)  => {
         res.sendStatus( 200 );
     }).catch( (err) => {
-        console.log
+        console.log('error in DELETE:', err);
+        res.sendStatus( 500 );
     })
 })
 
 
+app.put( '/toDoItems/:id', (req, res) => {
+    console.log('in doneMark');
 
+    let doneMarkId = req.params.id
+
+    let isDone = 'true'
+
+    let queryParams = [isDone, doneMarkId];
+
+    let queryText = `UPDATE "toDoItems"
+    SET "itemDone" = $1
+    WHERE "id"=$2;`;
+   console.log(`How did this change?: ${doneMarkId}`);
+    pool.query(queryText, queryParams).then( (response) => {
+        res.sendStatus( 200 );
+    }).catch( (err) => {
+        console.log('error with update:', err);
+        res.sendStatus( 500 )
+    })
+})
 
 
 app.listen(PORT, () => {
