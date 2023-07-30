@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vendors/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="scripts/client.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="views/styles.css">
+  </head>
+    <title>Document</title>
+</head>
+<body>
+    <h2>Add Item</h2>
+    <input type="text" id="nameIn" value="" placeholder="Task Name">
+    <input type="text" id="completeIn" value="" placeholder="Task Finished?">
+    <button type="button" id="addButton">Add Task</button>
+    <div>
+        <table>
+            <thead>
+              <tr>
+                <th>Task Name</th>
+                <th>Item Finished? Y/N</th>
+              </tr>
+            </thead>
+            <tbody id="viewTasks">
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>
