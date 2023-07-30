@@ -10,11 +10,15 @@ $('#viewTasks').on('click', '.markAsDoneBtn', checkComp)
     getTasks();
 });
 
-function checkComp(){
-    const checkTask = $(this).data( 'id' );
-    console.log(checkTask)
 
-    checkTask
+function checkComp(event){
+    event.preventDefault();
+   // const checkTask = $(this).data( 'id' );
+    //console.log(checkTask.itemDone);
+
+    
+    $(this).parent().parent().addClass("done")
+  
 }
 
 

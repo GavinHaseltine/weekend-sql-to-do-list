@@ -1,0 +1,13 @@
+.done{
+    background-color: green;
+}
+
+body{
+    background-color: lightblue;
+}
+
+html{
+    font-family: Trebuchet MS, sans-serif;
+    font-weight: 300;
+    font-size: large;
+}

@@ -3,3 +3,7 @@ CREATE TABLE "toDoItems" (
 	"itemName" VARCHAR(100) not null,
 	"itemDone" BOOLEAN DEFAULT FALSE
 	);
+	INSERT INTO "toDoItems"
+	   ("itemName", "itemDone")
+	   VALUES
+	   ('sampleTask','false');
