@@ -39,7 +39,7 @@ function clicklisteners() {
 
         let taskToSend = {
             itemName: $('#nameIn').val(),
-            itemDone: $('#completeIn').val()
+            itemDone: false
         }
         console.log(taskToSend);
         $.ajax({
