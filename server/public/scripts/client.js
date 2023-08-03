@@ -4,8 +4,9 @@ $( document ).ready( function(){
     console.log( 'JQ' );
 $('#addButton').on('click', clicklisteners)
 $('#viewTasks').on('click', '.deleteButton', deleteTask)
-$('#viewTasks').on('click', '.markAsDoneBtn', markDone)
 $('#viewTasks').on('click', '.markAsDoneBtn', checkComp)
+$('#viewTasks').on('click', '.markAsDoneBtn', markDone)
+
 
     getTasks();
 });
@@ -16,7 +17,6 @@ function checkComp(event){
    // const checkTask = $(this).data( 'id' );
     //console.log(checkTask.itemDone);
 
-    
     $(this).parent().parent().addClass("done")
   
 }
@@ -63,10 +63,10 @@ function clicklisteners() {
 
      for( let i=0; i<Tasks.length; i++){
          el.append(`
-         <tr>
+         <tr class=${Tasks[i].itemDone ? 'done' : ''}>
          <td>${Tasks[i].itemName}</td> 
          <td>${Tasks[i].itemDone}</td>
-         <td><button class="markAsDoneBtn"
+         <td ><button class="markAsDoneBtn"
          data-id="${Tasks[i].id}"
          data-marking="${Tasks[i].marking}">
          Complete Task
@@ -75,6 +75,7 @@ function clicklisteners() {
          </tr>
          `)
      }
+    
  }
 
  function deleteTask(){
@@ -143,3 +144,12 @@ function clicklisteners() {
 //         alert ('error updating:', err);
 //     })
 //  }
+
+
+
+
+// { <td><button class="markAsDoneBtn"
+//          data-id="${Tasks[i].id}"
+//          data-marking="${Tasks[i].marking}">
+//          Complete Task
+//          </button></td> }
